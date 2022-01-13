@@ -32,9 +32,19 @@ db.drop_tables([Memes])
 db.create_tables([Memes])
 
 
-meme1 = Memes(bottomText='Good!', image='http://imgflip.com/s/meme/Grumpy-Cat.jpg', name='',
+meme1 = Memes(bottomText='Good!', image='http://imgflip.com/s/meme/Grumpy-Cat.jpg', name='Grumpy Cat',
               rank=10, tags='Tardar Sauce, Tabatha Bundesen, Felis domesticus', topText=' ')
+
+meme2 = Memes(bottomText='Winter is Coming', image='https://imgflip.com/s/meme/Brace-Yourselves-X-is-Coming.jpg', name='Brace Yourselves',
+              rank=20, tags='Winter is Coming, Ned Stark, Sean Bean, Game of Thrones, GOT, Imminent Ned', topText='Brace Yourselves')
+
+meme3 = Memes(bottomText='Or just ___', image='https://imgflip.com/s/meme/Futurama-Fry.jpg', name='Futurama Fry',
+              rank=30, tags='Not Sure If', topText='Not sure if ___')
+
+
 meme1.save()
+meme2.save()
+meme3.save()
 
 
 app = Flask(__name__)
