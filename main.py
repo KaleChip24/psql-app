@@ -33,51 +33,37 @@ db.create_tables([Memes])
 
 
 meme1 = Memes(bottomText='Good!', image='http://imgflip.com/s/meme/Grumpy-Cat.jpg', name='Grumpy Cat',
-              rank=10, tags='Tardar Sauce, Tabatha Bundesen, Felis domesticus', topText=' ')
+              rank=10, tags='Tardar Sauce, Tabatha Bundesen, Felis domesticus', topText=' ').save()
 
 meme2 = Memes(bottomText='Winter is Coming', image='https://imgflip.com/s/meme/Brace-Yourselves-X-is-Coming.jpg', name='Brace Yourselves',
-              rank=20, tags='Winter is Coming, Ned Stark, Sean Bean, Game of Thrones, GOT, Imminent Ned', topText='Brace Yourselves')
+              rank=20, tags='Winter is Coming, Ned Stark, Sean Bean, Game of Thrones, GOT, Imminent Ned', topText='Brace Yourselves').save()
 
 meme3 = Memes(bottomText='Or just ___', image='https://imgflip.com/s/meme/Futurama-Fry.jpg', name='Futurama Fry',
-              rank=30, tags='Not Sure If', topText='Not sure if ___')
+              rank=30, tags='Not Sure If', topText='Not sure if ___').save()
 
 meme4 = Memes(bottomText='Walk into mordor', image='https://imgflip.com/s/meme/One-Does-Not-Simply.jpg', name='One Does Not Simply',
-              rank=40, tags='One Does Not Simply Walk Into Mordor, Boromir, Sean Bean, Ned Stark, LOTR, Lord of the rings, One Ring', topText='One does not simply')
+              rank=40, tags='One Does Not Simply Walk Into Mordor, Boromir, Sean Bean, Ned Stark, LOTR, Lord of the rings, One Ring', topText='One does not simply').save()
 
 meme5 = Memes(bottomText='Who ___', image='https://imgflip.com/s/meme/Am-I-The-Only-One-Around-Here.jpg', name='Am I The Only One Around Here',
-              rank=70, tags='Dude Abides, Big Lebowski, Angry Walter Sobchak', topText='Am I the only one around here')
+              rank=70, tags='Dude Abides, Big Lebowski, Angry Walter Sobchak', topText='Am I the only one around here').save()
 
 meme6 = Memes(bottomText='Success!', image='https://imgflip.com/s/meme/Success-Kid.jpg',
-              name='Success Kid', rank=80, tags='I hate sandcastles, eating sand', topText=' ')
+              name='Success Kid', rank=80, tags='I hate sandcastles, eating sand', topText=' ').save()
 
 meme7 = Memes(bottomText='But when I do ___', image='https://imgflip.com/s/meme/The-Most-Interesting-Man-In-The-World.jpg',
-              name='The Most Interesting Man in the World', rank=160, tags='Jonathan Goldsmith', topText="I don't always ___")
+              name='The Most Interesting Man in the World', rank=160, tags='Jonathan Goldsmith', topText="I don't always ___").save()
 
 meme8 = Memes(bottomText='Everywhere', image='https://imgflip.com/s/meme/X-Everywhere.jpg',
-              name='X, X Everywhere', rank=170, tags='Toy story, Buzz lightyear, Woody', topText='___, ___')
+              name='X, X Everywhere', rank=170, tags='Toy story, Buzz lightyear, Woody', topText='___, ___').save()
 
 meme9 = Memes(bottomText="That'd be great", image='https://imgflip.com/s/meme/That-Would-Be-Great.jpg',
-              name='That would be great', rank=180, tags='Bill Lumbergh, Office Space', topText='Yeah, If you could just ___')
+              name='That would be great', rank=180, tags='Bill Lumbergh, Office Space', topText='Yeah, If you could just ___').save()
 
 meme10 = Memes(bottomText='Show Me What You Got', image='http://i.imgur.com/6Ln3hp8.png',
-               name='Show Me What You Got', rank=188, tags='Rick and Morty, Giant Heads, Dan, Justin, Adult Swim', topText=' ')
+               name='Show Me What You Got', rank=188, tags='Rick and Morty, Giant Heads, Dan, Justin, Adult Swim', topText=' ').save()
 
 meme11 = Memes(bottomText='Show Me What You Got', image='http://i.imgur.com/6Ln3hp8.png',
-               name='Show Me What You Got', rank=188, tags='Rick and Morty, Giant Heads, Dan, Justin, Adult Swim', topText=' ')
-
-
-
-meme1.save()
-meme2.save()
-meme3.save()
-meme4.save()
-meme5.save()
-meme6.save()
-meme7.save()
-meme8.save()
-meme9.save()
-meme10.save()
-meme11.save()
+               name='Show Me What You Got', rank=188, tags='Rick and Morty, Giant Heads, Dan, Justin, Adult Swim', topText=' ').save()
 
 
 app = Flask(__name__)
@@ -97,7 +83,7 @@ def meme(id=None):
         return jsonify(memes)
 
 
-@app.route('/bottomText/<bottomText>', methods=['GET'])
+@app.route('/meme/bottomText/<bottomText>', methods=['GET'])
 def btmText(bottomText=None):
     if bottomText:
         meme = Memes.get(Memes.bottomText == bottomText)
@@ -110,7 +96,7 @@ def btmText(bottomText=None):
         return jsonify(memes)
 
 
-@app.route('/name/<name>', methods=['GET'])
+@app.route('/meme/name/<name>', methods=['GET'])
 def name(name=None):
     if name:
         meme = Memes.get(Memes.name == name)
@@ -123,7 +109,7 @@ def name(name=None):
         return jsonify(memes)
 
 
-@app.route('/rank/<rank>', methods=['GET'])
+@app.route('/meme/rank/<rank>', methods=['GET'])
 def rank(rank=None):
     if rank:
         meme = Memes.get(Memes.rank == rank)
@@ -136,7 +122,7 @@ def rank(rank=None):
         return jsonify(memes)
 
 
-@app.route('/tags/<tags>', methods=['GET'])
+@app.route('/meme/tags/<tags>', methods=['GET'])
 def tags(tags=None):
     if rank:
         meme = Memes.get(Memes.tags == tags)
@@ -149,7 +135,7 @@ def tags(tags=None):
         return jsonify(memes)
 
 
-@app.route('/topText/<topText>', methods=['GET'])
+@app.route('/meme/topText/<topText>', methods=['GET'])
 def topText(topText=None):
     if rank:
         meme = Memes.get(Memes.topText == topText)
