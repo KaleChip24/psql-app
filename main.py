@@ -62,6 +62,10 @@ meme9 = Memes(bottomText="That'd be great", image='https://imgflip.com/s/meme/Th
 meme10 = Memes(bottomText='Show Me What You Got', image='http://i.imgur.com/6Ln3hp8.png',
                name='Show Me What You Got', rank=188, tags='Rick and Morty, Giant Heads, Dan, Justin, Adult Swim', topText=' ')
 
+meme11 = Memes(bottomText='Show Me What You Got', image='http://i.imgur.com/6Ln3hp8.png',
+               name='Show Me What You Got', rank=188, tags='Rick and Morty, Giant Heads, Dan, Justin, Adult Swim', topText=' ')
+
+
 
 meme1.save()
 meme2.save()
@@ -73,6 +77,7 @@ meme7.save()
 meme8.save()
 meme9.save()
 meme10.save()
+meme11.save()
 
 
 app = Flask(__name__)
@@ -83,6 +88,71 @@ app = Flask(__name__)
 def meme(id=None):
     if id:
         meme = Memes.get(Memes.id == id)
+        meme = model_to_dict(meme)
+        return jsonify(meme)
+    else:
+        memes = []
+        for meme in Memes.select():
+            memes.append(model_to_dict(meme))
+        return jsonify(memes)
+
+
+@app.route('/bottomText/<bottomText>', methods=['GET'])
+def btmText(bottomText=None):
+    if bottomText:
+        meme = Memes.get(Memes.bottomText == bottomText)
+        meme = model_to_dict(meme)
+        return jsonify(meme)
+    else:
+        memes = []
+        for meme in Memes.select():
+            memes.append(model_to_dict(meme))
+        return jsonify(memes)
+
+
+@app.route('/name/<name>', methods=['GET'])
+def name(name=None):
+    if name:
+        meme = Memes.get(Memes.name == name)
+        meme = model_to_dict(meme)
+        return jsonify(meme)
+    else:
+        memes = []
+        for meme in Memes.select():
+            memes.append(model_to_dict(meme))
+        return jsonify(memes)
+
+
+@app.route('/rank/<rank>', methods=['GET'])
+def rank(rank=None):
+    if rank:
+        meme = Memes.get(Memes.rank == rank)
+        meme = model_to_dict(meme)
+        return jsonify(meme)
+    else:
+        memes = []
+        for meme in Memes.select():
+            memes.append(model_to_dict(meme))
+        return jsonify(memes)
+
+
+@app.route('/tags/<tags>', methods=['GET'])
+def tags(tags=None):
+    if rank:
+        meme = Memes.get(Memes.tags == tags)
+        meme = model_to_dict(meme)
+        return jsonify(meme)
+    else:
+        memes = []
+        for meme in Memes.select():
+            memes.append(model_to_dict(meme))
+        return jsonify(memes)
+
+
+@app.route('/topText/<topText>', methods=['GET'])
+def topText(topText=None):
+    if rank:
+        meme = Memes.get(Memes.topText == topText)
         meme = model_to_dict(meme)
         return jsonify(meme)
     else:
